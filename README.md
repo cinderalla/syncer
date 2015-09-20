@@ -5,13 +5,13 @@ Fast stateful file/disk data syncer.
 
 #### Description
 
-The main purpose of this utility is fast data synchronizing between two
-hard drives: one is fast (SSD, SATA HDD), another is connected through
-slow USB interface. Task is to lower amounts of data needed to be
-transferred.
+The main purpose of this utility is fast data synchronization between
+two hard drives: one is fast (SSD, SATA HDD), another is connected
+through slow USB interface. Target is to lower data amounts needed to
+be transferred.
 
 This utility is stateful: it keeps precomputed data hashes in separate
-statefile and use it to determine if we need to update block of data.
+statefile and uses it to determine if we need to update block of data.
 
 ```
 # sync from very fast SSD to slow USB connected HDD
@@ -53,7 +53,7 @@ syncer is free software: see the file COPYING for copying conditions.
 
 `SRC_SIZE || BLK_SIZE || HASH0 || HASH1 || ...`
 
-SRC_SIZE contains size of the source, when it was firstly read. BLK_SIZE
+SRC_SIZE contains size of the source, when it was initially read. BLK_SIZE
 is the blocksize used. Both are 64-bit big-endian unsigned integers. If
 either size or blocksize differs, then syncer will deny using that
 statefile as a precaution. HASHx is BLAKE2b-512 hash output, 64 bytes.
