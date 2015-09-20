@@ -35,7 +35,7 @@ import (
 var (
 	blkSize   = flag.Int64("blk", 2*1<<10, "Block size (KiB)")
 	statePath = flag.String("state", "state.bin", "Path to statefile")
-	dstPath   = flag.String("dst", "/dev/ada0", "Path to destination disk")
+	dstPath   = flag.String("dst", "", "Path to destination disk")
 	srcPath   = flag.String("src", "/dev/da0", "Path to source disk")
 )
 
@@ -53,6 +53,10 @@ func prn(s string) {
 func main() {
 	flag.Parse()
 	bs := *blkSize * int64(1<<10)
+
+	if *dstPath == "" {
+		log.Fatalln("Not destination is specified")
+	}
 
 	// Open source, calculate number of blocks
 	var size int64
